@@ -23,7 +23,7 @@ defaults:
       type: posts
     values:
       layout: post
-      comment: true
+      comment: false
 
 
 # sass
