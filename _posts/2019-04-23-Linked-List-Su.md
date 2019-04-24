@@ -6,6 +6,32 @@ comment: false
 
 ### 링크드 리스트
 
+1. 고정 길이인 배열에 비해 길이가 가변적이다. 
+2. 중간에 데이터 삽입, 삭제가 용이하다.
+
+
+
+#### 링크드 리스트의 종류
+
+- 싱글 링크드 리스트
+  - 다음 노드로만 연결
+- 더블 링크드 리스트
+  - 다음 노드와 전 노드를 연결
+
+![image](https://user-images.githubusercontent.com/26815767/56560218-c42ded00-65de-11e9-8ecf-0f30cf0a8b6e.png)
+
+
+
+
+
+#### Insert
+
+
+
+![image](https://user-images.githubusercontent.com/26815767/56560238-d0b24580-65de-11e9-8a0b-e11728bc3808.png)
+
+
+
 ```c
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
