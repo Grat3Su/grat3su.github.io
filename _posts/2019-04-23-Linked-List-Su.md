@@ -1,5 +1,5 @@
 ---
-title: "Stack"
+title: "Linked List"
 date: 2019-04-16
 comment: false
 ---
