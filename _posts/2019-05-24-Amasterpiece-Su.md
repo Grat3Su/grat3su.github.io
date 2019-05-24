@@ -9,4 +9,5 @@ comment: false
 
 
 <object id = "UnityEmbed" data = "\game"
-        width = 1280 Height = 768 type = "application/vnd.unity">
+        width = 1280 Height = 768 
+        type = "application/vnd.unity">
