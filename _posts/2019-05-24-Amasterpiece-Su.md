@@ -11,8 +11,8 @@ comment: false
 
 
 
-<script src="/game/NoEntry/TemplateData/UnityProgress.js"></script>
-<script src="/game/NoEntry/Build/UnityLoader.js"></script>
+<script src="/game/TemplateData/UnityProgress.js"></script>
+<script src="/game/Build/UnityLoader.js"></script>
 <script>
 var gameInstance = UnityLoader.instantiate("gameContainer", "/game/Build/web.json", {onProgress: UnityProgress});
 </script>
