@@ -1,6 +1,6 @@
 ---
 
-title : "복사 생성자"
+title : "Random Dance"
 date: 2019-08-14
 comment: false
 ---
