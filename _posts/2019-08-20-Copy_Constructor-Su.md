@@ -1,6 +1,6 @@
 ---
 title : "복사 생성자"
-date: 2019-08-14
+date: 2019-08-20
 comment: false
 
 ---
@@ -40,8 +40,30 @@ int &ref(num)
 - 객체의 초기화/마무리가 필요한 경우 유용하게 사용됨.
 - 생성자
   - 객체 생성시 자동으로 호출되는 함수.
+  
   - 자기 자신(클래스)와 같은 이름.
+  
   - 자동으로 호출되기 때문에 return값이 없음.
+  
+  - 매개변수의 할당이 없는 경우 디폴트 생성자라고 한다.
+  
+  - ```c++
+    class NewClass
+    {
+    public:
+    	NewClass();//디폴트 생성자
+    	NewClass(int num1, float num2);//생성자 오버로딩
+    	~NewClass();
+    
+    	void ShowNum();
+    
+    private:
+    	int i_num;
+    	float f_num;
+    };
+    ```
+  
+    
 - 소멸자
   - 메모리 해제 바로 전에 호출되는 함수
   - 마찬가지로 return 값을 지정할 수 없음.
@@ -96,17 +118,35 @@ int &ref(num)
 
 3. new를 사용하는 경우
 
+   1.   일반 할당
    ```c++
    	NewClass *new3;
    	new3 =new NewClass;
    	new3->ShowNum();
-   
-   	delete (new3);
-   ```
 
-   - new expression : 내부적으로 new function을 호출하고 있음.
+   	delete new3;
+   ```
+   2. 배열 할당  
+   
+  ```c++
+   NewClass *new5;
+   	new5 = new NewClass[3];//디폴트 생성자로 호출
+   	new5->ShowNum();
+   	new5[0].ShowNum();
+   	new5[1].ShowNum();
+   	new5[2].ShowNum();
+   	delete[] new5;
+   ```
+   
+   - new expression 
+     - 내부적으로 new function을 호출하고 있음.
+     - new operator로 메모리를 할당하고 그 타입에 대한 생성자 호출
    - 자동으로 생성자와 소멸자가 호출됨
    - 오버로딩 불가능
+
+
+
+연산자 오버로딩에서는 new operator만 오버로딩 가능. 생성자 호출을 막을수 없다.
 
 
 
