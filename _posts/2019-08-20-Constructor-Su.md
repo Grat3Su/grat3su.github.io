@@ -1,5 +1,5 @@
 ---
-title : "복사 생성자"
+title : "생성자"
 date: 2019-08-20
 comment: false
 
@@ -47,13 +47,19 @@ int &ref(num)
   
   - 매개변수의 할당이 없는 경우 디폴트 생성자라고 한다.
   
-  - ```c++
+  - 생성자를 오버로딩하여 적절한 생성자가 호출되도록 만들 수 있음.
+  
+- 소멸자
+  - 메모리 해제 바로 전에 호출되는 함수
+  - 마찬가지로 return 값을 지정할 수 없음.
+
+- ```c++
     class NewClass
     {
     public:
     	NewClass();//디폴트 생성자
     	NewClass(int num1, float num2);//생성자 오버로딩
-    	~NewClass();
+    	~NewClass();//소멸자
     
     	void ShowNum();
     
@@ -61,13 +67,15 @@ int &ref(num)
     	int i_num;
     	float f_num;
     };
-    ```
-  
     
-- 소멸자
-  - 메모리 해제 바로 전에 호출되는 함수
-  - 마찬가지로 return 값을 지정할 수 없음.
-
+void main()
+    {
+        NewClass new1;
+    	NewClass new2(50, 16.5f);
+        NewClass new3 = 
+    }
+    ```
+    
 - 객체 메모리 할당 -> 생성자 호출 -> ... ->소멸자 호출 -> 메모리 해제
 
 
@@ -136,8 +144,9 @@ int &ref(num)
    	new5[1].ShowNum();
    	new5[2].ShowNum();
    	delete[] new5;
-   ```
-   
+  ```
+
+   - 배열의 경우, 각각의 생성자를 호출
    - new expression 
      - 내부적으로 new function을 호출하고 있음.
      - new operator로 메모리를 할당하고 그 타입에 대한 생성자 호출
@@ -150,25 +159,58 @@ int &ref(num)
 
 
 
-### 얕은 복사 ( = 디폴트 복사)
+암시적 호출 : C++ 컴파일러는 함수의 인자로 들어오는 값을 알아서 타입에 맞게 바꿀 수 있다.
 
----
+```c++
+class AAA{
+public:
+	AAA();
+	AAA(int i) : num(i);
+	~AAA();
+private:
+	int num;
+};
 
-1. 자동으로 삽입이 된다.
-2. ㅇㄴ
+void A(AAA a)
+{
+    cout<<"작동함"<<endl;
+}
+
+void main()
+{
+    AAA a = 5;
+   	A(3);
+}
+```
+
+A는 AAA 클래스를 받아야하는데 마치 변수를 받는것 처럼 쓰이고 있다. 
+
+main에서 A에 변수를 보내더라도  C++ 컴파일러가 AAA 클래스를 읽어오면서 적절한 형식을 찾아 대입하기 때문에 정상적으로 작동하게 된다.
 
 
 
+```c++
+class AAA{
+public:
+	AAA();
+	explicit AAA(int i) : num(i);
+	~AAA();
+private:
+	int num;
+};
 
+void A(AAA a)
+{
+    cout<<"작동함"<<endl;
+}
 
----
+void main()
+{
+    AAA a(5);
+   	A(AAA(3));//AAA타입의 객체를 만드는 문장
+    AAA temp = AAA(3);//위의 것과 동일한 작동 temporary object
+}
+```
 
-### 깊은 복사 ( = 사용자 지정 복사)
-
----
-
-1. 오..음...
-2. 으...
-
-
+생성자 앞에 explicit를 붙이면 명시적인 생성자 호출만 받게되어 main의 A는 작동하지 않는다.
 
